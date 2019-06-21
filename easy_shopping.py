@@ -1,3 +1,52 @@
+
+
+## Input Capture
+valid_entries = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
+while True:
+    chicken_total = input("Enter the number of chicken meals desired: ")
+    if chicken_total in valid_entries:     #prevents generation of large number of recipes
+        pass
+    else:
+        print("Invalid entry please enter a number between 0 and 9 inclusive") #ensures entry is a numeric value 
+        next
+    
+    beef_total = input("Enter the number of beef meals desired: ")
+    if beef_total in valid_entries:     #prevents generation of large number of recipes
+        pass
+    else:
+        print("Invalid entry please enter a number between 0 and 9 inclusive") #ensures entry is a numeric value 
+        next
+
+    fish_total = input("Enter the number of fish meals desired: ")
+    if fish_total in valid_entries:     #prevents generation of large number of recipes
+        pass
+    else:
+        print("Invalid entry please enter a number between 0 and 9 inclusive") #ensures entry is a numeric value 
+        next
+    
+    pork_total = input("Enter the number of pork meals desired: ")
+    if pork_total in valid_entries:     #prevents generation of large number of recipes
+        pass
+    else:
+        print("Invalid entry please enter a number between 0 and 9 inclusive") #ensures entry is a numeric value 
+        next
+
+    other_total = input("Enter the number of other meals desired: ")
+    if other_total in valid_entries:     #prevents generation of large number of recipes
+        break
+    else:
+        print("Invalid entry please enter a number between 0 and 9 inclusive") #ensures entry is a numeric value 
+        next
+
+print(chicken_total)
+print(beef_total)
+print(fish_total)
+print(pork_total)
+print(other_total)
+
+## Recipe List
+
 chicken = [
         {"name": "Beer Can Chicken",
         "website": "https://www.foodnetwork.com/recipes/patrick-and-gina-neely/pats-beer-can-grilled-chicken-recipe-1945080",
