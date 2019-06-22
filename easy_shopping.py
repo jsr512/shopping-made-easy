@@ -50,35 +50,36 @@ print(other_total)
 chicken = [
         {"name": "Beer Can Chicken",
         "website": "https://www.foodnetwork.com/recipes/patrick-and-gina-neely/pats-beer-can-grilled-chicken-recipe-1945080",
-        "ingredients": {"4-lb whole chicken": "meat", "1 12 ounce beer": "other"}}
+        "ingredients": {"meat": ["4-lb whole chicken"], "other": ["1 12 ounce beer"]}}
 ]
 
 beef = [
         {"name": "Slow Cooker Korean Beef",
         "website": "https://www.ihearteating.com/slow-cooker-korean-beef/",
-        "ingredients": {"4-lb boneless beef chuck roast": "meat", "1 cup beef broth": "canned goods", "1/2 cup soy sauce": "sauces", "1/3 cup brown sugar": "baking", "5 cloves garlic": "spices", "2 T sesame Oil": "baking", "2 T rice vinegar":"baking", "2 T ginger": "spices", "2 T gochujang": "asian", "1/2 tsp onion powder": "spices"}},
+        "ingredients": {"meat": ["4-lb boneless beef chuck roast"], "other": ["1 cup beef broth", "1/2 cup soy sauce", "1/3 cup brown sugar", "2 T sesame Oil", "2 T rice vinegar", "2 T gochujang"], "spices": ["5 cloves garlic", "1/2 tsp onion powder"], "produce": ["2 T ginger"]}},
         
         {"name": "Cheeseburger Casserole",
         "website": "https://lowcarbyum.com/bacon-cheeseburger-casserole/",
-        "ingredients": {"2-lbs ground beef": "meat", "1-lb bacon": "meat", "8 eggs": "dairy", "2 cloves garlic": "spices", "1/2 tsp onion powder": "spices", "1 can tomato paste": "canned goods", "1 cup heavy cream": "dairy", "12 ounces grated cheddar": "dairy"}}
+        "ingredients": {"meat": ["2-lbs ground beef", "1-lb bacon"], "dairy": ["8 eggs", "1 cup heavy cream", "12 ounces grated cheddar"], "spices": ["2 cloves garlic", "1/2 tsp onion powder"], "other": ["1 can tomato paste"]}}
 ]
-
 
 fish = [
         {"name": "Baked Lemon Haddock",
         "website": "https://www.tasteofhome.com/recipes/baked-lemon-haddock/",
-        "ingredients": {"2-lb haddock": "meat", "1 cum bread crumbs": "baking", "1/4 cup butter": "dairy", "2 T parsley": "spices", "2 T Lemon Zest": "produce", "1/2 tsp garlic powder": "spices"}}
+        "ingredients": {"meat": ["2-lb haddock"], "other": ["1 cup bread crumbs", ], "dairy": ["1/4 cup butter"], "spices": ["2 T parsley", "1/2 tsp garlic powder"], "produce": ["2 T Lemon Zest"]}}
 ]
 
 chicken_meal_list = random.sample(chicken, k=int(chicken_total)) 
 beef_meal_list = random.sample(beef, k=int(beef_total)) 
 fish_meal_list = random.sample(fish, k=int(fish_total)) 
-pork_meal_list = random.sample(pork, k=int(pork_total)) 
-other_meal_list = random.sample(other, k=int(other_total)) 
+#pork_meal_list = random.sample(pork, k=int(pork_total)) 
+#other_meal_list = random.sample(other, k=int(other_total)) #need to input samples in order to uncomment 
+
 
 print(chicken_meal_list)
 print(beef_meal_list)
 print(fish_meal_list)
-print(pork_meal_list)
-print(other_meal_list)
+#print(pork_meal_list) #need to input samples in order to uncomment
+#print(other_meal_list) #need to input samples in order to uncomment
+
 
