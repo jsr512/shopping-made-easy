@@ -1,4 +1,4 @@
-
+import random
 
 ## Input Capture
 valid_entries = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
@@ -69,4 +69,16 @@ fish = [
         "website": "https://www.tasteofhome.com/recipes/baked-lemon-haddock/",
         "ingredients": {"2-lb haddock": "meat", "1 cum bread crumbs": "baking", "1/4 cup butter": "dairy", "2 T parsley": "spices", "2 T Lemon Zest": "produce", "1/2 tsp garlic powder": "spices"}}
 ]
+
+chicken_meal_list = random.sample(chicken, k=int(chicken_total)) 
+beef_meal_list = random.sample(beef, k=int(beef_total)) 
+fish_meal_list = random.sample(fish, k=int(fish_total)) 
+pork_meal_list = random.sample(pork, k=int(pork_total)) 
+other_meal_list = random.sample(other, k=int(other_total)) 
+
+print(chicken_meal_list)
+print(beef_meal_list)
+print(fish_meal_list)
+print(pork_meal_list)
+print(other_meal_list)
 
