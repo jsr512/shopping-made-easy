@@ -17,8 +17,10 @@ Create and activate a new virtual environment
     conda activate easy-shopping-env
     ''
 
-##packages
-#.env gitignore
+##packages- sendgrid/os.
+##recipe formatting
+#.env gitignore- sendgrid/email addresses
 #API key instruction
+
 
 ## Running the Program

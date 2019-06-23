@@ -1,5 +1,9 @@
 import random
 
+import os
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+
 ## Input Capture
 valid_entries = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
@@ -45,7 +49,7 @@ print(fish_total)
 print(pork_total)
 print(other_total)
 
-## Recipe List
+## Recipe Data
 
 chicken = [
         {"name": "Beer Can Chicken",
@@ -69,33 +73,51 @@ fish = [
         "ingredients": {"meat": ["2-lb haddock"], "other": ["1 cup bread crumbs", ], "dairy": ["1/4 cup butter"], "spices": ["2 T parsley", "1/2 tsp garlic powder"], "produce": ["2 T Lemon Zest"]}}
 ]
 
+## Compiling Shopping List
+
 chicken_meal_list = random.sample(chicken, k=int(chicken_total)) 
 beef_meal_list = random.sample(beef, k=int(beef_total)) 
 fish_meal_list = random.sample(fish, k=int(fish_total)) 
 #pork_meal_list = random.sample(pork, k=int(pork_total)) 
 #other_meal_list = random.sample(other, k=int(other_total)) #need to input samples in order to uncomment 
 
+shopping_list = []
 
 for meal in chicken_meal_list:
         print(meal["name"])
+        print(meal["website"])
+        ingredients = (meal["ingredients"])
+        shopping_list.append(ingredients)
 
 for meal in beef_meal_list:
         print(meal["name"])
+        print(meal["website"])
+        ingredients = (meal["ingredients"])
+        shopping_list.append(ingredients)
 
 for meal in fish_meal_list:
         print(meal["name"])
+        print(meal["website"])
+        ingredients = (meal["ingredients"])
+        shopping_list.append(ingredients)
 
 #for meal in pork_meal_list:
 #        print(meal["name"])
+#        print(meal["website"])
+#        ingredients = (meal["ingredients"])
+#        shopping_list.append(ingredients)
 
 #for meal in other_meal_list:
-#       print(meal["name"])    
+#        print(meal["name"])    
+#        print(meal["website"])
+#        ingredients = (meal["ingredients"])
+#        shopping_list.append(ingredients)
+
+print(shopping_list)
+
+#for proteins in shopping_list:
+#    print(shopping_list["meat"])
 
 
-#print(chicken_meal_list)
-#print(beef_meal_list)
-#print(fish_meal_list)
-#print(pork_meal_list) #need to input samples in order to uncomment
-#print(other_meal_list) #need to input samples in order to uncomment
 
 
