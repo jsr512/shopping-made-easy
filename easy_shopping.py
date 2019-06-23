@@ -118,6 +118,22 @@ print(shopping_list)
 #for proteins in shopping_list:
 #    print(shopping_list["meat"])
 
+## EMAILING List
 
+message = Mail(
+    from_email=(os.environ.get("MY_EMAIL_ADDRESS")),
+    to_emails=(os.environ.get("KATIE_EMAIL_ADDRESS")),
+    subject='Shopping List',
+    html_content='test' )  #TODO
+
+try:
+    sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+    response = sg.send(message)
+    print(response.status_code)
+    print(response.body)
+    print(response.headers)
+
+except Exception as e:
+    print("Oops! Looks like the email didn't go through.")
 
 
