@@ -70,7 +70,7 @@ beef = [
 fish = [
         {"name": "Baked Lemon Haddock",
         "website": "https://www.tasteofhome.com/recipes/baked-lemon-haddock/",
-        "ingredients": {"meat": ["2-lb haddock"], "other": ["1 cup bread crumbs", ], "dairy": ["1/4 cup butter"], "spices": ["2 T parsley", "1/2 tsp garlic powder"], "produce": ["2 T Lemon Zest"]}}
+        "ingredients": {"meat": ["2-lb haddock"], "other": ["1 cup bread crumbs"], "dairy": ["1/4 cup butter"], "spices": ["2 T parsley", "1/2 tsp garlic powder"], "produce": ["2 T Lemon Zest"]}}
 ]
 
 ## Compiling Shopping List
@@ -111,29 +111,41 @@ for meal in fish_meal_list:
 #        print(meal["name"])    
 #        print(meal["website"])
 #        ingredients = (meal["ingredients"])
-#        shopping_list.append(ingredients)
+#        shopping_list.append(ingredients)               ### TODO build out iterations
 
 print(shopping_list)
 
-#for proteins in shopping_list:
-#    print(shopping_list["meat"])
+all_meat = []
+all_produce = []
+all_dairy = []
+all_spices = []
+all_other = [] 
 
-## EMAILING List
+for stuff in shopping_list:
+    meat_by_meal = (stuff["meat"])
+    all_meat = all_meat + (meat_by_meal)    #compiles list of all meat ingredients into one list
 
-message = Mail(
-    from_email=(os.environ.get("MY_EMAIL_ADDRESS")),
-    to_emails=(os.environ.get("KATIE_EMAIL_ADDRESS")),
-    subject='Shopping List',
-    html_content='test' )  #TODO
 
-try:
-    sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
-    response = sg.send(message)
-    print(response.status_code)
-    print(response.body)
-    print(response.headers)
 
-except Exception as e:
-    print("Oops! Looks like the email didn't go through.")
+print(all_meat)
 
+
+### EMAILING List
+#
+#message = Mail(
+#    from_email=(os.environ.get("MY_EMAIL_ADDRESS")),
+#    to_emails=(os.environ.get("KATIE_EMAIL_ADDRESS")),
+#    subject='Shopping List',
+#    html_content='test' )  #TODO
+#
+#try:
+#    sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+#    response = sg.send(message)
+#    print(response.status_code)
+#    print(response.body)
+#    print(response.headers)
+#
+#except Exception as e:
+#    print("Oops! Looks like the email didn't go through.")
+#
 
