@@ -76,9 +76,25 @@ fish_meal_list = random.sample(fish, k=int(fish_total))
 #other_meal_list = random.sample(other, k=int(other_total)) #need to input samples in order to uncomment 
 
 
-print(chicken_meal_list)
-print(beef_meal_list)
-print(fish_meal_list)
+for meal in chicken_meal_list:
+        print(meal["name"])
+
+for meal in beef_meal_list:
+        print(meal["name"])
+
+for meal in fish_meal_list:
+        print(meal["name"])
+
+#for meal in pork_meal_list:
+#        print(meal["name"])
+
+#for meal in other_meal_list:
+#       print(meal["name"])    
+
+
+#print(chicken_meal_list)
+#print(beef_meal_list)
+#print(fish_meal_list)
 #print(pork_meal_list) #need to input samples in order to uncomment
 #print(other_meal_list) #need to input samples in order to uncomment
 
