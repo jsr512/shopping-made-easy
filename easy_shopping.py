@@ -49,28 +49,28 @@ print(fish_total)
 print(pork_total)
 print(other_total)
 
-## Recipe Data
+## Recipe Data  order must be meat/produce/dairy/spices/other
 
 chicken = [
         {"name": "Beer Can Chicken",
         "website": "https://www.foodnetwork.com/recipes/patrick-and-gina-neely/pats-beer-can-grilled-chicken-recipe-1945080",
-        "ingredients": {"meat": ["4-lb whole chicken"], "other": ["1 12 ounce beer"]}}
+        "ingredients": {"meat": ["4-lb whole chicken"], "produce": [], "dairy": [], "spices": [], "other": ["1 12 ounce beer"]}}
 ]
 
 beef = [
         {"name": "Slow Cooker Korean Beef",
         "website": "https://www.ihearteating.com/slow-cooker-korean-beef/",
-        "ingredients": {"meat": ["4-lb boneless beef chuck roast"], "other": ["1 cup beef broth", "1/2 cup soy sauce", "1/3 cup brown sugar", "2 T sesame Oil", "2 T rice vinegar", "2 T gochujang"], "spices": ["5 cloves garlic", "1/2 tsp onion powder"], "produce": ["2 T ginger"]}},
+        "ingredients": {"meat": ["4-lb boneless beef chuck roast"], "produce": ["2 T ginger"], "dairy": [], "spices": ["5 cloves garlic", "1/2 tsp onion powder"], "other": ["1 cup beef broth", "1/2 cup soy sauce", "1/3 cup brown sugar", "2 T sesame Oil", "2 T rice vinegar", "2 T gochujang"]}},
         
         {"name": "Cheeseburger Casserole",
         "website": "https://lowcarbyum.com/bacon-cheeseburger-casserole/",
-        "ingredients": {"meat": ["2-lbs ground beef", "1-lb bacon"], "dairy": ["8 eggs", "1 cup heavy cream", "12 ounces grated cheddar"], "spices": ["2 cloves garlic", "1/2 tsp onion powder"], "other": ["1 can tomato paste"]}}
+        "ingredients": {"meat": ["2-lbs ground beef", "1-lb bacon"], "produce": [], "dairy": ["8 eggs", "1 cup heavy cream", "12 ounces grated cheddar"], "spices": ["2 cloves garlic", "1/2 tsp onion powder"], "other": ["1 can tomato paste"]}}
 ]
 
 fish = [
         {"name": "Baked Lemon Haddock",
         "website": "https://www.tasteofhome.com/recipes/baked-lemon-haddock/",
-        "ingredients": {"meat": ["2-lb haddock"], "other": ["1 cup bread crumbs"], "dairy": ["1/4 cup butter"], "spices": ["2 T parsley", "1/2 tsp garlic powder"], "produce": ["2 T Lemon Zest"]}}
+        "ingredients": {"meat": ["2-lb haddock"], "produce": [],"dairy": ["1/4 cup butter"], "spices": ["2 T parsley", "1/2 tsp garlic powder"], "produce": ["2 T Lemon Zest"], "other": ["1 cup bread crumbs"]}}
 ]
 
 ## Compiling Shopping List
@@ -121,14 +121,28 @@ all_dairy = []
 all_spices = []
 all_other = [] 
 
-for stuff in shopping_list:
-    meat_by_meal = (stuff["meat"])
-    all_meat = all_meat + (meat_by_meal)    #compiles list of all meat ingredients into one list
+for item in shopping_list:
+    meat_by_meal = (item["meat"])
+    all_meat = all_meat + meat_by_meal
+    other_by_meal = (item["other"])
+    all_other = all_other + other_by_meal
+    dairy_by_meal = (item["dairy"])
+    all_dairy = all_dairy + dairy_by_meal 
+    produce_by_meal = (item["produce"])
+    all_produce = all_produce + produce_by_meal   
+    spices_by_meal = (item["spices"])
+    all_spices = all_spices + spices_by_meal
 
+compiled_list = all_produce + all_meat + all_dairy + all_spices + all_other
 
+#needs to be string /, loop through list and assemble
 
-print(all_meat)
+final_list = ""
 
+for thing in compiled_list:
+    final_list = final_list + thing + "\n"
+
+print(final_list)
 
 ### EMAILING List
 #
@@ -136,7 +150,7 @@ print(all_meat)
 #    from_email=(os.environ.get("MY_EMAIL_ADDRESS")),
 #    to_emails=(os.environ.get("KATIE_EMAIL_ADDRESS")),
 #    subject='Shopping List',
-#    html_content='test' )  #TODO
+#    html_content=final_list )  #TODO
 #
 #try:
 #    sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
