@@ -17,7 +17,7 @@ Create and activate a new virtual environment
     conda activate easy-shopping-env
     ''
 
-##packages- sendgrid/os.
+##packages- sendgrid/os.pip install python-dotenv
 ##recipe formatting
 #.env gitignore- sendgrid/email addresses
 #API key instruction

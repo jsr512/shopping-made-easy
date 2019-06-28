@@ -46,12 +46,6 @@ while True:
         print("Invalid entry please enter a number between 0 and 9 inclusive") #ensures entry is a numeric value 
         next
 
-print(chicken_total)
-print(beef_total)
-print(fish_total)
-print(pork_total)
-print(other_total)
-
 ## Recipe Data  #must contain meat/produce/dairy/spices/other lists within ingrediants to iterate through with for loop below even if empty
 
 chicken = [
@@ -78,8 +72,8 @@ beef = [
         "ingredients": {"meat": ["2-lbs ground beef", "1-lb bacon"], "produce": [], "dairy": ["8 eggs", "1 cup heavy cream", "12 ounces grated cheddar"], "spices": ["2 cloves garlic", "1/2 tsp onion powder"], "other": ["1 can tomato paste"]}},
 
         {"name": "Grilled Steak",
-        "website": "none",
-        "ingrediants": {"meat": ["steak cut of choice"], "produce": [], "dairy": [], "spices": [], "other": []}},
+        "website": "no website",
+        "ingredients": {"meat": ["steak cut of choice"], "produce": [], "dairy": [], "spices": [], "other": []}},
 
         {"name": "Slow Cooker Broccoli Beef",
         "website": "https://www.lecremedelacrumb.com/slow-cooker-broccoli-beef/",
@@ -89,7 +83,7 @@ beef = [
 fish = [
         {"name": "Baked Lemon Haddock",
         "website": "https://www.tasteofhome.com/recipes/baked-lemon-haddock/",
-        "ingredients": {"meat": ["2-lb haddock"], "produce": [],"dairy": ["1/4 cup butter"], "spices": ["2 T parsley", "1/2 tsp garlic powder"], "produce": ["2 T Lemon Zest"], "other": ["1 cup bread crumbs"]}}
+        "ingredients": {"meat": ["2-lb haddock"], "produce": ["2 T Lemon Zest"],"dairy": ["1/4 cup butter"], "spices": ["2 T parsley", "1/2 tsp garlic powder"], "other": ["1 cup bread crumbs"]}}
 ]
 
 pork = [
@@ -113,49 +107,47 @@ other = [
         "ingredients": {"meat": ["4 slices bacon"], "produce": ["1 zucchini", "1/4 cup dried cranberries"],"dairy": ["1 oz goat cheese"], "spices": [], "other": ["1/3 cup walnuts", "1/5 T apple cider vinegar", "3/4 tsp dijon", "1.5 T maple syrup"]}}
 ]
 
-
-
 ## Compiling Shopping List
 
 chicken_meal_list = random.sample(chicken, k=int(chicken_total)) 
 beef_meal_list = random.sample(beef, k=int(beef_total)) 
 fish_meal_list = random.sample(fish, k=int(fish_total)) 
-#pork_meal_list = random.sample(pork, k=int(pork_total)) 
-#other_meal_list = random.sample(other, k=int(other_total)) #need to input samples in order to uncomment 
+pork_meal_list = random.sample(pork, k=int(pork_total)) 
+other_meal_list = random.sample(other, k=int(other_total)) 
 
 shopping_list = []
 
+print("\n" + "\n")
+
 for meal in chicken_meal_list:
-        print(meal["name"])
-        print(meal["website"])
+        chicken_meal_name = meal["name"]
+        chicken_meal_website = meal["website"]
         ingredients = (meal["ingredients"])
         shopping_list.append(ingredients)
 
 for meal in beef_meal_list:
-        print(meal["name"])
-        print(meal["website"])
+        beef_meal_name = meal["name"]
+        beef_meal_website = meal["website"]
         ingredients = (meal["ingredients"])
         shopping_list.append(ingredients)
 
 for meal in fish_meal_list:
-        print(meal["name"])
-        print(meal["website"])
+        fish_meal_name = meal["name"]
+        fish_meal_website = meal["website"]
         ingredients = (meal["ingredients"])
         shopping_list.append(ingredients)
 
-#for meal in pork_meal_list:
-#        print(meal["name"])
-#        print(meal["website"])
-#        ingredients = (meal["ingredients"])
-#        shopping_list.append(ingredients)
+for meal in pork_meal_list:
+        pork_meal_name = meal["name"]
+        pork_meal_website = meal["website"]
+        ingredients = (meal["ingredients"])
+        shopping_list.append(ingredients)
 
-#for meal in other_meal_list:
-#        print(meal["name"])    
-#        print(meal["website"])
-#        ingredients = (meal["ingredients"])
-#        shopping_list.append(ingredients)               ### TODO build out iterations
-
-print(shopping_list)
+for meal in other_meal_list:
+        other_meal_name = meal["name"]
+        other_meal_website = meal["website"]
+        ingredients = (meal["ingredients"])
+        shopping_list.append(ingredients)               
 
 all_meat = []
 all_produce = []
@@ -178,29 +170,27 @@ for item in shopping_list:
 
 compiled_list = all_produce + all_meat + all_dairy + all_spices + all_other
 
-final_list = ""
+final_list = chicken_meal_name + " \r\n" + chicken_meal_website + " \r\n" + " \r\n" + beef_meal_name + " \r\n" + beef_meal_website + "\r\n" + "\r\n" + fish_meal_name + "\r\n" + fish_meal_website + "\r\n" + "\r\n" + pork_meal_name + "\r\n" + pork_meal_website + "\r\n" + "\r\n" + other_meal_name + "\r\n" + other_meal_website + "\r\n" + "\r\n"
 
 for thing in compiled_list:
-    final_list = final_list + thing + "\n"
+    final_list = final_list + thing + "\r\n"
 
 print(final_list)
 
-### EMAILING List
-#
-#message = Mail(
-#    from_email=(os.environ.get("MY_EMAIL_ADDRESS")),
-#    to_emails=(os.environ.get("KATIE_EMAIL_ADDRESS")),
-#    subject='Shopping List',
-#    html_content=final_list )  #TODO
-#
-#try:
-#    sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
-#    response = sg.send(message)
-#    print(response.status_code)
-#    print(response.body)
-#    print(response.headers)
-#
-#except Exception as e:
-#    print("Oops! Looks like the email didn't go through.")
-#
+## EMAILING List
+
+message = Mail(
+    from_email=(os.environ.get("MY_EMAIL_ADDRESS")),
+    to_emails=(os.environ.get("MY_EMAIL_ADDRESS")),
+    subject='Shopping List',
+    html_content=final_list )
+
+try:
+    sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+    response = sg.send(message)
+    print(response.status_code)
+
+except Exception as e:
+    print("Oops! Looks like the email didn't go through.")
+
 
