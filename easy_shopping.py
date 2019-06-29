@@ -181,9 +181,9 @@ print(final_list)
 
 message = Mail(
     from_email=(os.environ.get("MY_EMAIL_ADDRESS")),
-    to_emails=(os.environ.get("MY_EMAIL_ADDRESS")),
+    to_emails=(os.environ.get("KATIE_EMAIL_ADDRESS")),
     subject='Shopping List',
-    html_content=final_list )
+    plain_text_content=final_list )
 
 try:
     sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))

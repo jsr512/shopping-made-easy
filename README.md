@@ -1,8 +1,10 @@
 # shopping-made-easy
-Chooses from favorite recipes and generates organized shopping list
 
-## Installation
-Fork the repo from https://github.com/jsr512/shopping-made-easy 
+Chooses randomly from a list of favorite recipes and generates organized shopping list sent via email
+
+## Installation and Setup
+
+Fork the repo from: https://github.com/jsr512/shopping-made-easy
 
 Create a local repository with the name easy-shopping then navigate to this using the command line
 
@@ -17,10 +19,38 @@ Create and activate a new virtual environment
     conda activate easy-shopping-env
     ''
 
-##packages- sendgrid/os.pip install python-dotenv
-##recipe formatting
-#.env gitignore- sendgrid/email addresses
-#API key instruction
+Within the virtual environment, install the necessary packages for th program to run
 
+    ''
+    pip install sendgrid==6.0.5
+    pip install os
+    pip install python-dotenv
+    ''
+
+Create a sengrid account through the sendgrid website and link the email that you would like to send emails by following the instructions provided by sendgrid. Secure the given API Key for usage within this program.
+
+Create .env files in order to securly contain data for both sender and recipient email if you wish for this information to be hidden. Also create a .env file SENDGRID_API_KEY placing within it the API key obtained through account set up.
+
+Add all .env files create to a .gitignore file
+
+## Data Customization (optional)
+
+The program is configured with recipes hardcoded. Should you wish to customize the recipe list please use the following formatting to ensure the program runs successfully. All data entered should be in string format.
+
+    ''
+    recipe catagory = [
+            {"name": ""example recipe name",
+            "website": "example recipe website",
+            "ingredients": {"meat": ["example"], "produce": ["example"], "dairy": ["example"], "spices": ["example"], "other": ["example"]}} 
+    ]   
+    ''
 
 ## Running the Program
+
+Once installation and setup is complete initiate the program using the following command:
+
+    ''
+    python easy_shopping.py
+    ''
+
+Once initiated, follow the prompts on screen. The program will ask to input the number of desired meal by catagory, in the default case by protein. Once data is enter for one of each [chicken, beef, fish, pork, other] the program will randomly select a recipe from the coded list and provide the user with an output of recipe name, recipe email, follwed by a shopping list organized by each of the following store departments [produce, meat, dairy, spices, other] Finally an email will be sent to the configured address containing the information output in the terminal for easy on the go reference.
