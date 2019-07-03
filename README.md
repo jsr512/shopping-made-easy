@@ -38,7 +38,7 @@ Add all .env files create to a .gitignore file
 The program is configured with recipes hardcoded. Should you wish to customize the recipe list please use the following formatting to ensure the program runs successfully. All data entered should be in string format.
 
     ''
-    recipe catagory = [
+    recipe_catagory = [
             {"name": ""example recipe name",
             "website": "example recipe website",
             "ingredients": {"meat": ["example"], "produce": ["example"], "dairy": ["example"], "spices": ["example"], "other": ["example"]}} 

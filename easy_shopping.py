@@ -16,37 +16,37 @@ while True:
         pass
     else:
         print("Invalid entry please enter a number between 0 and 9 inclusive") #ensures entry is a numeric value 
-        next
+        continue
     
     beef_total = input("Enter the number of beef meals desired: ")
     if beef_total in valid_entries:     #prevents generation of large number of recipes
         pass
     else:
         print("Invalid entry please enter a number between 0 and 9 inclusive") #ensures entry is a numeric value 
-        next
+        continue
 
     fish_total = input("Enter the number of fish meals desired: ")
     if fish_total in valid_entries:     #prevents generation of large number of recipes
         pass
     else:
         print("Invalid entry please enter a number between 0 and 9 inclusive") #ensures entry is a numeric value 
-        next
+        continue
     
     pork_total = input("Enter the number of pork meals desired: ")
     if pork_total in valid_entries:     #prevents generation of large number of recipes
         pass
     else:
         print("Invalid entry please enter a number between 0 and 9 inclusive") #ensures entry is a numeric value 
-        next
+        continue
 
     other_total = input("Enter the number of other meals desired: ")
     if other_total in valid_entries:     #prevents generation of large number of recipes
         break
     else:
         print("Invalid entry please enter a number between 0 and 9 inclusive") #ensures entry is a numeric value 
-        next
+        continue
 
-## Recipe Data  #must contain meat/produce/dairy/spices/other lists within ingrediants to iterate through with for loop below even if empty
+## Recipe Data  #must contain meat/produce/dairy/spices/other lists within ingrediants to iterate through with for loop below even if empty. Sample template available in README
 
 chicken = [
         {"name": "Beer Can Chicken",
@@ -116,36 +116,46 @@ pork_meal_list = random.sample(pork, k=int(pork_total))
 other_meal_list = random.sample(other, k=int(other_total)) 
 
 shopping_list = []
+chicken_meal_info = ""
+beef_meal_info = ""
+fish_meal_info = ""
+pork_meal_info = ""
+other_meal_info = ""
 
 print("\n" + "\n")
 
 for meal in chicken_meal_list:
-        chicken_meal_name = meal["name"]
-        chicken_meal_website = meal["website"]
+        single_chicken_meal_name = meal["name"]
+        single_chicken_meal_website = meal["website"]
+        chicken_meal_info = chicken_meal_info + single_chicken_meal_name + "\n" + single_chicken_meal_website + "\n" + "\n"
         ingredients = (meal["ingredients"])
         shopping_list.append(ingredients)
 
 for meal in beef_meal_list:
-        beef_meal_name = meal["name"]
-        beef_meal_website = meal["website"]
+        single_beef_meal_name = meal["name"]
+        single_beef_meal_website = meal["website"]
+        beef_meal_info = beef_meal_info + single_beef_meal_name + "\n" + single_beef_meal_website + "\n" + "\n"
         ingredients = (meal["ingredients"])
         shopping_list.append(ingredients)
 
 for meal in fish_meal_list:
-        fish_meal_name = meal["name"]
-        fish_meal_website = meal["website"]
+        single_fish_meal_name = meal["name"]
+        single_fish_meal_website = meal["website"]
+        fish_meal_info = fish_meal_info + single_fish_meal_name + "\n" + single_fish_meal_website + "\n" + "\n"
         ingredients = (meal["ingredients"])
         shopping_list.append(ingredients)
 
 for meal in pork_meal_list:
-        pork_meal_name = meal["name"]
-        pork_meal_website = meal["website"]
+        single_pork_meal_name = meal["name"]
+        single_pork_meal_website = meal["website"]
+        pork_meal_info = pork_meal_info + single_pork_meal_name + "\n" + single_pork_meal_website + "\n" + "\n"
         ingredients = (meal["ingredients"])
         shopping_list.append(ingredients)
 
 for meal in other_meal_list:
-        other_meal_name = meal["name"]
-        other_meal_website = meal["website"]
+        single_other_meal_name = meal["name"]
+        single_other_meal_website = meal["website"]
+        other_meal_info = other_meal_info + single_other_meal_name + "\n" + single_other_meal_website + "\n" + "\n"
         ingredients = (meal["ingredients"])
         shopping_list.append(ingredients)               
 
@@ -170,10 +180,10 @@ for item in shopping_list:
 
 compiled_list = all_produce + all_meat + all_dairy + all_spices + all_other
 
-final_list = chicken_meal_name + " \r\n" + chicken_meal_website + " \r\n" + " \r\n" + beef_meal_name + " \r\n" + beef_meal_website + "\r\n" + "\r\n" + fish_meal_name + "\r\n" + fish_meal_website + "\r\n" + "\r\n" + pork_meal_name + "\r\n" + pork_meal_website + "\r\n" + "\r\n" + other_meal_name + "\r\n" + other_meal_website + "\r\n" + "\r\n"
+final_list = chicken_meal_info + " \n" + beef_meal_info + " \n" + fish_meal_info + "\n" + pork_meal_info + "\n" + other_meal_info + "\n" + "\n"
 
 for thing in compiled_list:
-    final_list = final_list + thing + "\r\n"
+    final_list = final_list + thing + "\n"
 
 print(final_list)
 
