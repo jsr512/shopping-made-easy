@@ -109,18 +109,18 @@ other = [
 
 ## Compiling Shopping List
 
-chicken_meal_list = random.sample(chicken, k=int(chicken_total)) 
+chicken_meal_list = random.sample(chicken, k=int(chicken_total)) #reference- https://docs.python.org/3/library/random.html
 beef_meal_list = random.sample(beef, k=int(beef_total)) 
 fish_meal_list = random.sample(fish, k=int(fish_total)) 
 pork_meal_list = random.sample(pork, k=int(pork_total)) 
-other_meal_list = random.sample(other, k=int(other_total)) 
+other_meal_list = random.sample(other, k=int(other_total))  #randomly choose recipe based on user input, must convert string user input to #
 
 shopping_list = []
 chicken_meal_info = ""
 beef_meal_info = ""
 fish_meal_info = ""
 pork_meal_info = ""
-other_meal_info = ""
+other_meal_info = ""        #filled with data by looping through randomly choicen meals in code below
 
 print("\n" + "\n")
 
@@ -163,8 +163,7 @@ all_meat = []
 all_produce = []
 all_dairy = []
 all_spices = []
-all_other = [] 
-
+all_other = []      #filled with data by looping through code below, seperates ingredients into department for organization
 
 for item in shopping_list:
     meat_by_meal = (item["meat"])
@@ -183,7 +182,7 @@ compiled_list = all_produce + all_meat + all_dairy + all_spices + all_other
 final_list = chicken_meal_info + " \n" + beef_meal_info + " \n" + fish_meal_info + "\n" + pork_meal_info + "\n" + other_meal_info + "\n" + "\n"
 
 for thing in compiled_list:
-    final_list = final_list + thing + "\n"
+    final_list = final_list + thing + "\n"      #comiles and formats ingredients and recipe info
 
 print(final_list)
 
@@ -193,7 +192,7 @@ message = Mail(
     from_email=(os.environ.get("MY_EMAIL_ADDRESS")),
     to_emails=(os.environ.get("KATIE_EMAIL_ADDRESS")),
     subject='Shopping List',
-    plain_text_content=final_list )
+    plain_text_content=final_list )                         #must be plain_text, HTML will not format properly 
 
 try:
     sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
@@ -201,6 +200,6 @@ try:
     print(response.status_code)
 
 except Exception as e:
-    print("Oops! Looks like the email didn't go through.")
+    print("Oops! Looks like the email didn't go through.")      #reference- https://github.com/jsr512/nyu-info-2335-201905/blob/master/notes/python/packages/sendgrid.md
 
 
